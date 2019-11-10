@@ -12,6 +12,9 @@ func findRepeated(arr []int) int {
 		return -1
 	}
 	for i := 0; i < len(arr); i++ {
+		if arr[i] < 0 || arr[i] > len(arr)-1 {
+			return -1
+		}
 		for arr[i] != i && arr[i] != arr[arr[i]]{
 			arr[arr[i]], arr[i] = arr[i], arr[arr[i]]
 		}
