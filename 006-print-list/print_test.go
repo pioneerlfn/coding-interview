@@ -51,6 +51,8 @@ func TestReversePrintListRecursive(t *testing.T) {
 	}{
 		"simple": {n1,"4->3->2->1"},
 		"null": {nil, ""},
+		"one node": {n4, "4"},
+		"two node": {n3, "4->3"},
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
