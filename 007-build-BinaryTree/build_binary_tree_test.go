@@ -23,8 +23,7 @@ func TestBuildBinaryTree(t *testing.T) {
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
-			tree := buildFromPreAndInorder(tt.pre, tt.inorder)
-			got := PostTranverse(tree)
+			got := buildAndPostTraverse(tt.pre, tt.inorder)
 			if !reflect.DeepEqual(tt.want, got) {
 				t.Errorf("want=%v, got=%v\n", tt.want, got)
 			}
@@ -32,13 +31,3 @@ func TestBuildBinaryTree(t *testing.T) {
 	}
 }
 
-func PostTranverse(root *BinaryTree) []int {
-	if root == nil {
-		return nil
-	}
-	var res []int
-	res = append(res, PostTranverse(root.Left)...)
-	res = append(res, PostTranverse(root.Right)...)
-	res = append(res, root.Val)
-	return res
-}

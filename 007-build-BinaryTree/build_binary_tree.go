@@ -1,7 +1,7 @@
 /*
 @Time : 2019-11-11 15:28
 @Author : lfn
-@File : buildbst
+@File : build_binary_tree
 */
 
 package _07_build_BST
@@ -10,6 +10,11 @@ type BinaryTree struct {
 	Val int
 	Left *BinaryTree
 	Right *BinaryTree
+}
+
+func buildAndPostTraverse(pre, in []int) []int {
+	tree := buildFromPreAndInorder(pre, in)
+	return postTraverse(tree)
 }
 
 func buildFromPreAndInorder(pre, in []int) *BinaryTree {
@@ -34,8 +39,13 @@ func buildFromPreAndInorder(pre, in []int) *BinaryTree {
 	return root
 }
 
-
-
-
-
-
+func postTraverse(root *BinaryTree) []int {
+	if root == nil {
+		return nil
+	}
+	var res []int
+	res = append(res, postTraverse(root.Left)...)
+	res = append(res, postTraverse(root.Right)...)
+	res = append(res, root.Val)
+	return res
+}
