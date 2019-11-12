@@ -13,9 +13,12 @@ type BinaryTree struct {
 	Parent *BinaryTree
 }
 
-func findNextNodeValue(root, node *BinaryTree) byte {
-	res := findNextNode(root, node)
-	return res.Val
+func findNextNodeValue(root, target *BinaryTree) (res byte) {
+	node := findNextNode(root, target)
+	if node != nil {
+		res = node.Val
+	}
+	return
 }
 
 func findNextNode(root, node *BinaryTree) *BinaryTree {

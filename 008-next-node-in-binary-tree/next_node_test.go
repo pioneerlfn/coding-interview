@@ -35,6 +35,7 @@ func TestFindNextNode(t *testing.T) {
 		"without right and is the right":{a, i, 'a'},
 		"has right":{a, e, 'i'},
 		"root":{a, a, 'f'},
+		"null":{a, nil, '\x00'},
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
