@@ -1,7 +1,7 @@
 /*
 @Time : 2019-11-13 21:55
 @Author : lfn
-@File : min
+@File : findMinBiSearch
 */
 
 package _11_min_rotate_arr
@@ -15,10 +15,10 @@ func minInRotate(arr []int) int {
 	if arr[low] == arr[high] && arr[low] == arr[mid] {
 		return findMinLinear(arr)
 	}
-	return min(arr, 0, len(arr)-1)
+	return findMinBiSearch(arr, 0, len(arr)-1)
 }
 
-func min(arr []int, low, high int) int {
+func findMinBiSearch(arr []int, low, high int) int {
 	for low < high {
 		if high - low == 1 {
 			break
