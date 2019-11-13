@@ -16,12 +16,12 @@ func TestFib(t *testing.T) {
 		n int
 		want int
 	}{
-		"1":{0,1},
+		"1":{0,0},
 		"2":{1, 1},
-		"3":{2, 2},
-		"4":{3, 3},
-		"5":{4, 5},
-		"6":{10, 89},
+		"3":{2, 1},
+		"4":{3, 2},
+		"5":{4, 3},
+		"6":{10, 55},
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
