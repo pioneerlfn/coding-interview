@@ -6,11 +6,6 @@
 
 package _09_stack_queue
 
-import (
-	"fmt"
-	"reflect"
-)
-
 type Stack []byte
 
 func (s *Stack) Push(item byte) {
@@ -44,31 +39,3 @@ func (q *Queue) Dequeue() byte {
 	}
 	return '\x00'
 }
-
-func main() {
-	want := []byte{'a', 'b', 'c', 'd', 'e','f'}
-	var got []byte
-	var q Queue
-	q.Push('a')
-	q.Push('b')
-	q.Push('c')
-	got = append(got, q.Dequeue())
-	got = append(got, q.Dequeue())
-	q.Push('d')
-	got = append(got, q.Dequeue())
-	q.Push('e')
-	q.Push('f')
-	item := q.Dequeue()
-	for item != '\x00' {
-		got = append(got, item)
-		item = q.Dequeue()
-	}
-	if reflect.DeepEqual(want, got) {
-		fmt.Printf("want = %#v, got = %#v\n", want, got)
-	}
-}
-
-
-
-
-
