@@ -31,8 +31,4 @@ func TestMinInRotate(t *testing.T) {
 			}
 		})
 	}
-
-
-
-
 }
