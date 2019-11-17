@@ -10,26 +10,37 @@ import (
 	"errors"
 )
 
-func power(base float64, exponet int) (float64, error) {
-	if base == 0 && exponet < 0 {
+func power(base float64, exponent int) (float64, error) {
+	if base == 0 && exponent < 0 {
 		return 0, errors.New("invalid input")
 	}
-	if exponet < 0 {
-		exponet = -exponet
+	var negative bool
+	if exponent < 0 {
+		negative = true
+		exponent = -exponent
 	}
-	res := powerWithAbsExponet(base, uint(exponet))
-	if exponet < 0 {
+	res := powerWithAbsExponent(base, uint(exponent))
+	if negative {
 		res = 1 / res
 	}
 	return res, nil
 }
 
-func powerWithAbsExponet(base float64, exponent uint) float64 {
-	res := 1.0
-	for i := uint(1); i <= exponent; i++ {
-		res *= base
+func powerWithAbsExponent(base float64, exponent uint) float64 {
+	if exponent == 0 {
+		return 1.0
 	}
-	return res
+	if exponent == 1 {
+		return base
+	}
+	/*for i := uint(1); i <= exponent; i++ {
+		res *= base
+	}*/
+	if exponent % 2 == 1 {
+		return base * powerWithAbsExponent(base*base, exponent / 2)
+	}
+	return powerWithAbsExponent(base*base, exponent / 2)
+
 }
 
 
